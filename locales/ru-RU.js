@@ -3300,6 +3300,14 @@ window.XBOARD_TRANSLATIONS['ru-RU'] = {
       "RESET_FLOW": "Сброс трафика"
     },
     "period": {
+      "monthly": "Ежемесячно",
+      "quarterly": "Ежеквартально",
+      "half_yearly": "Раз в полгода",
+      "yearly": "Ежегодно",
+      "two_yearly": "Раз в 2 года",
+      "three_yearly": "Раз в 3 года",
+      "onetime": "Единоразово",
+      "reset_traffic": "Пакет сброса",
       "month_price": "Ежемесячно",
       "quarter_price": "Ежеквартально",
       "half_year_price": "Раз в полгода",

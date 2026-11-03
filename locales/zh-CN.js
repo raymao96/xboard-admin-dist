@@ -3400,6 +3400,14 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
       "RESET_FLOW": "流量重置"
     },
     "period": {
+      "monthly": "月付",
+      "quarterly": "季付",
+      "half_yearly": "半年付",
+      "yearly": "年付",
+      "two_yearly": "两年付",
+      "three_yearly": "三年付",
+      "onetime": "一次性",
+      "reset_traffic": "流量重置包",
       "month_price": "月付",
       "quarter_price": "季付",
       "half_year_price": "半年付",

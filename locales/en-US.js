@@ -3385,6 +3385,14 @@ window.XBOARD_TRANSLATIONS['en-US'] = {
       "RESET_FLOW": "Reset Traffic"
     },
     "period": {
+      "monthly": "Monthly",
+      "quarterly": "Quarterly",
+      "half_yearly": "Semi-annually",
+      "yearly": "Annually",
+      "two_yearly": "Biennially",
+      "three_yearly": "Triennially",
+      "onetime": "One-time",
+      "reset_traffic": "Reset Package",
       "month_price": "Monthly",
       "quarter_price": "Quarterly",
       "half_year_price": "Semi-annually",

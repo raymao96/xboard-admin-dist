@@ -17,7 +17,119 @@
     <script src="./locales/ru-RU.js"></script>
     <script type="module" crossorigin src="./assets/index-CEIYH7i8.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-DiYa-_z_.css">
-  </head>
+  
+
+
+<script>
+(function() {
+    const periodMapping = {"month_price":"monthly","quarter_price":"quarterly","half_year_price":"half_yearly","year_price":"yearly","two_year_price":"two_yearly","three_year_price":"three_yearly","onetime_price":"onetime","reset_price":"reset_traffic"};
+    
+    // 1. API 攔截器 (處理傳輸層)
+    const originalSend = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.send = function(body) {
+        if (body) {
+            try {
+                let data = JSON.parse(body);
+                if (data.filter && Array.isArray(data.filter)) {
+                    data.filter.forEach(f => {
+                        if (f.id === 'period' && Array.isArray(f.value)) {
+                            f.value = f.value.map(v => periodMapping[v] || v);
+                        }
+                    });
+                    arguments[0] = JSON.stringify(data);
+                }
+            } catch (e) {}
+        }
+        return originalSend.apply(this, arguments);
+    };
+
+    // 2. 翻譯攔截器 (處理顯示層)
+    const fixKey = (key) => {
+        if (typeof key !== 'string') return key;
+        Object.entries(periodMapping).forEach(([oldK, newK]) => {
+            if (key.endsWith('.' + newK)) key = key.replace(newK, oldK);
+        });
+        return key;
+    };
+
+    const translate = (fn) => function(key) {
+        return fn.call(this, fixKey(key), ...Array.from(arguments).slice(1));
+    };
+
+    if (window.i) window.i = translate(window.i);
+    if (window.t) window.t = translate(window.t);
+})();
+</script>
+
+
+<script>
+(function() {
+    const periodMapping = {
+        'month_price': 'monthly',
+        'quarter_price': 'quarterly',
+        'half_year_price': 'half_yearly',
+        'year_price': 'yearly',
+        'two_year_price': 'two_yearly',
+        'three_year_price': 'three_yearly',
+        'onetime_price': 'onetime',
+        'reset_price': 'reset_traffic'
+    };
+
+    const originalSend = XMLHttpRequest.prototype.send;
+    XMLHttpRequest.prototype.send = function(body) {
+        let modifiedBody = body;
+        if (body && typeof body === 'string') {
+            try {
+                let data = JSON.parse(body);
+                if (data.filter && Array.isArray(data.filter)) {
+                    data.filter.forEach(f => {
+                        if (f.id === 'period' && Array.isArray(f.value)) {
+                            f.value = f.value.map(v => periodMapping[v] || v);
+                        }
+                    });
+                    modifiedBody = JSON.stringify(data);
+                }
+            } catch (e) {}
+        }
+        return originalSend.call(this, modifiedBody);
+    };
+})();
+</script>
+
+<script>
+(function() {
+    const periodTranslation = {
+        'monthly': '月付',
+        'quarterly': '季付',
+        'half_yearly': '半年付',
+        'yearly': '年付',
+        'two_yearly': '两年付',
+        'three_yearly': '三年付',
+        'onetime': '流量包',
+        'reset_traffic': '重置包'
+    };
+
+    const applyTranslation = () => {
+        if (window.XBOARD_TRANSLATIONS && window.XBOARD_TRANSLATIONS['zh-CN']) {
+            window.XBOARD_TRANSLATIONS['zh-CN'].period = periodTranslation;
+            console.log('[Patch] 翻譯檔注入成功');
+            return true;
+        }
+        return false;
+    };
+
+    // 嘗試立即注入
+    if (!applyTranslation()) {
+        // 若尚未載入，則監聽直到載入為止
+        const observer = setInterval(() => {
+            if (applyTranslation()) clearInterval(observer);
+        }, 500);
+    }
+})();
+</script>
+
+
+</head>
   <body>
     <div id="root"></div>
   </body>
