@@ -29,20 +29,16 @@ module.exports = function() {
             return;
         }
 
-        // 檢查該區塊上下文是否已經有 monthly (狀態檢查)
-        const contextStart = Math.max(0, anchorIdx - 200);
-        const contextCheck = content.substring(contextStart, anchorIdx);
-        
-        if (contextCheck.includes('"monthly":')) {
-            console.log(`[略過] ${file} 的訂單週期區塊已經包含 monthly`);
-            return;
-        }
-
         // 構建插入內容
         const trans = mappings[localeCode];
         let insertion = "";
         for (const [key, val] of Object.entries(trans)) {
             insertion += `      "${key}": "${val}",\n`;
+        }
+
+        if (content.includes(insertion)) {
+            console.log(`[略過] ${file} 的訂單週期翻譯已經注入過`);
+            return;
         }
 
         // 取得 anchor 所在行之前的內容

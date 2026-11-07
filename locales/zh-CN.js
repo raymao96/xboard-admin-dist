@@ -398,6 +398,7 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
         "orders": "TA的订单",
         "invites": "TA的邀请",
         "traffic_records": "TA的流量记录",
+        "tickets": "TA的工单",
         "delete": "删除",
         "delete_confirm_title": "确认删除用户",
         "delete_confirm_description": "此操作将永久删除用户 {{email}} 及其所有相关数据，包括订单、优惠码、流量记录、工单记录等信息。删除后无法恢复，是否继续？"
@@ -2778,10 +2779,31 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
     }
   },
   "ticket": {
+    "visibility": {
+      "normal_tab": "普通工单",
+      "hidden_tab": "隐藏工单",
+      "normal_description": "未隐藏用户的工单在此显示，未关闭的工单计入总览待处理工单，Telegram 工单提醒按原有设置发送。",
+      "description": "被隐藏用户的全部工单均在此显示，不计入总览待处理工单，也不发送 Telegram 工单提醒。",
+      "hidden_badge": "工单已隐藏",
+      "hide_action": "隐藏该用户工单",
+      "hide_title": "隐藏该用户的全部工单？",
+      "hide_description": "该用户现有及后续工单将仅在「隐藏工单」中显示，不计入总览待处理工单，也不再发送 Telegram 工单提醒。用户端的工单功能与状态保持不变，您仍可正常回复、关闭或重新开启工单。",
+      "hide_confirm": "确认隐藏",
+      "hide_success": "该用户的全部工单已隐藏",
+      "hide_error": "隐藏失败，请重试",
+      "restore_action": "恢复该用户工单",
+      "restore_title": "恢复该用户的全部工单？",
+      "restore_description": "该用户的全部工单将恢复至「普通工单」，未关闭的工单重新计入总览待处理工单。后续新工单及用户回复将按原有设置发送 Telegram 工单提醒，隐藏期间的提醒不会补发。",
+      "restore_confirm": "确认恢复",
+      "restore_success": "该用户的全部工单已恢复",
+      "restore_error": "恢复失败，请重试",
+      "empty": "暂无隐藏工单"
+    },
     "title": "工单管理",
     "description": "在这里可以查看用户工单，包括查看、回复、关闭等操作。",
     "columns": {
       "id": "工单号",
+      "user_id": "用户 ID",
       "subject": "主题",
       "level": "优先级",
       "status": "状态",
@@ -2813,6 +2835,11 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
       "close_confirm_description": "确定要关闭这个工单吗？关闭后会移入已关闭列表，但仍可继续回复。",
       "close_confirm_button": "确认关闭",
       "close_success": "工单已关闭",
+      "reopen_ticket": "重新开启",
+      "reopen_confirm_title": "确认重新开启工单",
+      "reopen_confirm_description": "确定要重新开启这个工单吗？",
+      "reopen_confirm_button": "确认重新开启",
+      "reopen_success": "工单已重新开启",
       "view_ticket": "查看工单"
     },
     "detail": {
@@ -2823,6 +2850,8 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
       "user_info": "用户信息",
       "traffic_records": "流量记录",
       "order_records": "订单记录",
+      "current_ticket": "当前工单",
+      "user_tickets": "TA的工单",
       "input": {
         "closed_reply_placeholder": "工单已关闭，仍可继续回复...",
         "closed_hint": "该工单已关闭，你仍可以继续回复，新的消息会追加到当前工单。",

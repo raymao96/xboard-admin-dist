@@ -397,6 +397,7 @@ window.XBOARD_TRANSLATIONS['en-US'] = {
         "orders": "Orders",
         "invites": "Invites",
         "traffic_records": "Traffic Records",
+        "tickets": "Tickets",
         "reset_traffic": "Reset Traffic",
         "delete": "Delete",
         "delete_confirm_title": "Confirm Delete User",
@@ -2749,10 +2750,31 @@ window.XBOARD_TRANSLATIONS['en-US'] = {
     }
   },
   "ticket": {
+    "visibility": {
+      "normal_tab": "Regular Tickets",
+      "hidden_tab": "Hidden Tickets",
+      "normal_description": "Tickets from users who are not hidden appear here. Open tickets count toward the dashboard pending total. Telegram ticket notifications follow the existing settings.",
+      "description": "All tickets from hidden users appear here. They do not count toward the dashboard pending total or send Telegram ticket notifications.",
+      "hidden_badge": "User tickets hidden",
+      "hide_action": "Hide this user's tickets",
+      "hide_title": "Hide all tickets from this user?",
+      "hide_description": "All existing and future tickets from this user will appear only in Hidden Tickets, be excluded from the dashboard pending total, and stop sending Telegram ticket notifications. Customer ticket functionality and statuses remain unchanged. You can still reply, close, or reopen tickets.",
+      "hide_confirm": "Confirm Hide",
+      "hide_success": "All tickets from this user are now hidden",
+      "hide_error": "Failed to hide tickets. Please try again.",
+      "restore_action": "Restore this user's tickets",
+      "restore_title": "Restore all tickets from this user?",
+      "restore_description": "All tickets from this user will return to Regular Tickets. Open tickets will count toward the dashboard pending total again. Future new tickets and customer replies will send Telegram ticket notifications according to the existing settings. Notifications from the hidden period will not be replayed.",
+      "restore_confirm": "Confirm Restore",
+      "restore_success": "All tickets from this user have been restored",
+      "restore_error": "Failed to restore tickets. Please try again.",
+      "empty": "No hidden tickets"
+    },
     "title": "Ticket Management",
     "description": "View and manage user tickets, including viewing, replying, and closing operations.",
     "columns": {
       "id": "Ticket ID",
+      "user_id": "User ID",
       "subject": "Subject",
       "level": "Priority",
       "status": "Status",
@@ -2784,6 +2806,11 @@ window.XBOARD_TRANSLATIONS['en-US'] = {
       "close_confirm_description": "Are you sure you want to close this ticket? It will move to the closed list, but you can still reply later.",
       "close_confirm_button": "Confirm Close",
       "close_success": "Ticket closed successfully",
+      "reopen_ticket": "Reopen",
+      "reopen_confirm_title": "Confirm Reopen Ticket",
+      "reopen_confirm_description": "Are you sure you want to reopen this ticket?",
+      "reopen_confirm_button": "Confirm Reopen",
+      "reopen_success": "Ticket reopened successfully",
       "view_ticket": "View Ticket"
     },
     "detail": {
@@ -2794,6 +2821,8 @@ window.XBOARD_TRANSLATIONS['en-US'] = {
       "user_info": "User Info",
       "traffic_records": "Traffic Records",
       "order_records": "Order Records",
+      "current_ticket": "Current",
+      "user_tickets": "User Tickets",
       "input": {
         "closed_reply_placeholder": "This ticket is closed, but you can still reply...",
         "closed_hint": "This ticket is closed. You can keep replying and new messages will still be appended here.",

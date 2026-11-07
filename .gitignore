@@ -3,3 +3,11 @@
 # AI
 *.md
 .opencode/
+mock/
+mock_server.*
+*.mock.js
+*.mock.py
+
+worklogs/
+
+*.mock.*

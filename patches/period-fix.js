@@ -40,13 +40,12 @@ module.exports = function() {
 })();
 </script>`;
 
-    const scriptRegex = /<script>\(function\(\) \{[\s\S]*?originalSend = XMLHttpRequest\.prototype\.send[\s\S]*?\}\)\(\);<\/script>/;
-    
-    if (scriptRegex.test(indexHtml)) {
-        indexHtml = indexHtml.replace(scriptRegex, apiPatchScript.trim());
-    } else {
-        indexHtml = indexHtml.replace('</head>', apiPatchScript + '\n</head>');
+    if (indexHtml.includes('const periodMapping')) {
+        console.log('[略過] period-fix: 已經注入過');
+        return;
     }
+
+    indexHtml = indexHtml.replace('</head>', apiPatchScript + '\n</head>');
     fs.writeFileSync(indexPath, indexHtml, 'utf8');
     console.log('[成功] 已注入 API 傳輸層攔截器 (period-fix)');
 };
