@@ -15,6 +15,14 @@ module.exports = function() {
     let code = fs.readFileSync(filePath, 'utf8');
     let changed = false;
 
+    const oldOrderLink = 'title:s("detail.order_records"),onClick:()=>{O?.user&&o("/finance/order?user_id="+O.user.id)}';
+    const orderLink = oldOrderLink.replace('user_id=', 'user_id=eq:');
+    const detailAnchor = orderLink + ',children:Q.jsx(p9t,{className:"h-4 w-4"})})';
+    if (!code.includes(detailAnchor)) {
+        code = replaceOnce(code, oldOrderLink, orderLink, '工單訂單記錄');
+        changed = true;
+    }
+
     const nestedOld = 'Q.jsx(b9t,{ticketId:z,open:null!==z,onOpenChange:v=>{v||Z(null)},dialogTrigger:Q.jsx("span",{})})';
     const nestedNew = 'null!==z&&Q.jsx(b9t,{ticketId:z,open:!0,onOpenChange:v=>{v||Z(null)},dialogTrigger:Q.jsx("span",{}),sidebarEmail:e})';
 
@@ -50,7 +58,6 @@ module.exports = function() {
     } else {
         const fnAnchor = 'function E8t({user_id:e,dialogTrigger:t}){';
         const menuAnchor = 'r("columns.actions_menu.traffic_records")]})})}),';
-        const detailAnchor = 'title:s("detail.order_records"),onClick:()=>{O?.user&&o("/finance/order?user_id="+O.user.id)},children:Q.jsx(p9t,{className:"h-4 w-4"})})';
         [fnAnchor, menuAnchor, detailAnchor].forEach(a => replaceOnce(code, a, a, a.slice(0, 40)));
 
         const dialog = 'function ZUT({email:e,dialogTrigger:t,currentId:u}){const{t:n}=jy(["ticket"]),[i,r]=H.useState(!1),[z,Z]=H.useState(null),{data:a,isLoading:l}=pC({queryKey:["userTickets",e,i],queryFn:()=>i?bT({email:e,pageSize:100,current:1,filter:[],sort:[]}):null}),c=a?.data??[];return Q.jsxs(htt,{open:i,onOpenChange:r,children:[Q.jsx(gtt,{asChild:!0,children:t}),Q.jsxs(ptt,{className:"sm:max-w-[700px]",children:[Q.jsx(mtt,{children:Q.jsx(_tt,{children:n("user:columns.actions_menu.tickets")})}),Q.jsx("div",{className:"rounded-md border"+(utt()?" overflow-y-auto max-h-[60vh]":""),children:Q.jsxs(EGt,{children:[Q.jsx(LGt,{children:Q.jsx(IGt,{children:["columns.id","columns.subject","columns.status","columns.updated_at"].map(k=>Q.jsx(RGt,{className:"h-10 px-2 text-xs",children:n(k)},k))})}),Q.jsx(DGt,{children:l?Q.jsx(IGt,{children:Q.jsx(OGt,{colSpan:4,className:"p-2 text-center text-muted-foreground",children:n("common:loading")})}):c.length?c.map(x=>Q.jsxs(IGt,{children:[Q.jsx(OGt,{className:"p-2",children:x.id}),Q.jsx(OGt,{className:"p-2",children:x.id===u?Q.jsxs("span",{className:"font-medium",children:[x.subject," ",Q.jsx("span",{className:"text-xs text-muted-foreground",children:n("detail.current_ticket")})]}):Q.jsx("button",{type:"button",className:"text-left font-medium hover:underline",onClick:()=>Z(x.id),children:x.subject})}),Q.jsx(OGt,{className:"p-2",children:n("status."+(1===x.status?"closed":1===x.reply_status?"replied":"pending"))}),Q.jsx(OGt,{className:"p-2",children:SS(x.updated_at)})]},x.id)):Q.jsx(IGt,{children:Q.jsx(OGt,{colSpan:4,className:"p-2 text-center text-muted-foreground",children:n("list.no_tickets")})})})]})})]}),' + nestedNew + ']})}';
