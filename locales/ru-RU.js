@@ -3312,6 +3312,8 @@ window.XBOARD_TRANSLATIONS['ru-RU'] = {
     "table": {
       "columns": {
         "tradeNo": "№ Заказа",
+        "noRemarks": "Нет",
+        "userRemarks": "Примечание",
         "type": "Тип",
         "plan": "Тарифный план",
         "period": "Период",

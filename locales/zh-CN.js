@@ -3412,6 +3412,8 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
     "table": {
       "columns": {
         "tradeNo": "订单号",
+        "noRemarks": "无",
+        "userRemarks": "备注",
         "type": "类型",
         "plan": "订阅计划",
         "period": "周期",
@@ -3426,7 +3428,7 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
       "NEW": "新购",
       "RENEWAL": "续费",
       "UPGRADE": "升级",
-      "RESET_FLOW": "流量重置"
+      "RESET_FLOW": "重置"
     },
     "period": {
       "monthly": "月付",
@@ -3436,7 +3438,7 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
       "two_yearly": "两年付",
       "three_yearly": "三年付",
       "onetime": "一次性",
-      "reset_traffic": "流量重置包",
+      "reset_traffic": "重置",
       "month_price": "月付",
       "quarter_price": "季付",
       "half_year_price": "半年付",
@@ -3444,7 +3446,7 @@ window.XBOARD_TRANSLATIONS['zh-CN'] = {
       "two_year_price": "两年付",
       "three_year_price": "三年付",
       "onetime_price": "一次性",
-      "reset_price": "流量重置包"
+      "reset_price": "重置"
     },
     "status": {
       "PENDING": "待支付",

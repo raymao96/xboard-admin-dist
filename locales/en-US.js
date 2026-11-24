@@ -3397,6 +3397,8 @@ window.XBOARD_TRANSLATIONS['en-US'] = {
     "table": {
       "columns": {
         "tradeNo": "Order No.",
+        "noRemarks": "None",
+        "userRemarks": "Remarks",
         "type": "Type",
         "plan": "Subscription Plan",
         "period": "Period",

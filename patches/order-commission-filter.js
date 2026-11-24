@@ -26,7 +26,9 @@ module.exports = function() {
     const asset = './' + assetPath;
     const scriptPattern = new RegExp(asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?:\\?[^"\\s]*)?(?=")', 'g');
     if ((html.match(scriptPattern) || []).length !== 1) throw new Error('order-commission-filter: 找不到唯一 HTML 入口');
-    const versionedAsset = assetPath + '?order-commission-filter=4';
+    const params = new URLSearchParams(entry.file.split('?')[1]);
+    params.set('order-commission-filter', '4');
+    const versionedAsset = `${assetPath}?${params.toString()}`;
     html = html.replace(scriptPattern, './' + versionedAsset);
     entry.file = versionedAsset;
 

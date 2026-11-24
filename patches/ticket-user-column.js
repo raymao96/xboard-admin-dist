@@ -14,7 +14,7 @@ module.exports = function() {
         if (code.split(anchor).length !== 2) {
             throw new Error('ticket-user-column: 找不到唯一的工單欄位錨點，可能原作者更新了結構');
         }
-        const column = '{id:"user_id",header:({column:e})=>Q.jsx(eQt,{column:e,title:t("columns.user_id")}),cell:({row:e})=>Q.jsx("span",{className:"pl-2 font-mono text-sm",children:e.original.user_id}),enableSorting:!1,enableHiding:!1,size:120},';
+        const column = '{id:"user_id",header:({column:e})=>Q.jsx(eQt,{column:e,title:t("columns.user_id")}),cell:({row:e})=>Q.jsx("span",{className:"font-mono text-sm",children:e.original.user_id}),enableSorting:!1,enableHiding:!1,size:120},';
         code = code.replace(anchor, 'enableHiding:!1},' + column + '{accessorKey:"subject",');
         fs.writeFileSync(filePath, code, 'utf8');
         console.log('[成功] ticket-user-column: 已注入用戶 ID 欄位');
